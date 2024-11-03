@@ -20,11 +20,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         header h1 {
-            font-size: 36px;
+            font-size: 48px;
             margin: 0;
+            font-weight: 600;
         }
         header h2 {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 300;
             margin-top: 5px;
         }
@@ -35,6 +36,20 @@
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .info-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .info-section img {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            font-size: 18px;
+            line-height: 1.6;
         }
         .search-area {
             text-align: center;
@@ -74,7 +89,14 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+        .property img {
+            width: 90%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
         .property h4 {
             color: #3b5998;
@@ -85,6 +107,7 @@
         }
         .contact-info, .booking {
             margin-top: 15px;
+            text-align: center;
         }
         .user-comments {
             margin-top: 15px;
@@ -97,6 +120,7 @@
         }
         .comment {
             margin-bottom: 10px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -106,6 +130,10 @@
         <h2>Your Perfect Rental Home Finder</h2>
     </header>
     <main>
+        <section class="info-section">
+            <img src="https://via.placeholder.com/1200x300?text=Find+Your+Dream+Home" alt="Happy Family in Home">
+            <p>Homescout is your trusted partner in finding the perfect rental home that suits your lifestyle and budget. From bustling city apartments to quiet suburban homes, we provide comprehensive details, ratings, and owner contact information to make your search seamless and stress-free.</p>
+        </section>
         <section class="search-area">
             <h2>Search for Rental Areas</h2>
             <select id="areaSelect" onchange="displayProperties()">
@@ -134,11 +162,11 @@
     <script>
         const properties = {
             "Downtown": [
-                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890", comments: ["Great location!", "Close to amenities.", "Safe neighborhood."] },
-                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210", comments: ["Affordable and well-maintained.", "Spacious rooms."] }
+                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/400x300?text=Modern+Loft", comments: ["Great location!", "Close to amenities.", "Safe neighborhood."] },
+                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://via.placeholder.com/400x300?text=Cozy+Apartment", comments: ["Affordable and well-maintained.", "Spacious rooms."] }
             ],
             "Uptown": [
-                { name: "Spacious Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", comments: ["Elegant interiors.", "Great community environment."] }
+                { name: "Spacious Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", image: "https://via.placeholder.com/400x300?text=Spacious+Condo", comments: ["Elegant interiors.", "Great community environment."] }
             ],
             // Additional areas can be added here
         };
@@ -154,10 +182,9 @@
                 resultsList.style.display = "block";
                 propertyDetails.innerHTML = properties[area].map(prop => `
                     <div class="property">
-                        <div>
-                            <h4>${prop.name}</h4>
-                            <p>Price: ${prop.price}</p>
-                        </div>
+                        <img src="${prop.image}" alt="${prop.name}">
+                        <h4>${prop.name}</h4>
+                        <p>Price: ${prop.price}</p>
                     </div>
                 `).join('');
                 contactInfo.innerHTML = properties[area].map(prop => `
