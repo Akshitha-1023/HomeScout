@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +97,21 @@
             position: relative;
             bottom: 0;
             width: 100%;
+        }
+        .review-form {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review-form textarea {
+            width: 100%;
+            height: 60px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -209,12 +225,30 @@
                         <h5>User Reviews:</h5>
                         ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
                     </div>
+                    <div class="review-form">
+                        <h5>Write Your Review:</h5>
+                        <textarea id="newReview_${property.name.replace(/\s+/g, '_')}" placeholder="Enter your review here..."></textarea>
+                        <button onclick="submitReview('${property.name.replace(/\s+/g, '_')}', '${property.name}')">Submit</button>
+                    </div>
                 `;
                 propertyDetailsDiv.appendChild(propertyDiv);
             });
             resultsDiv.style.display = "block";
         } else {
             resultsDiv.style.display = "none";
+        }
+    }
+
+    function submitReview(propertyId, propertyName) {
+        const reviewInput = document.getElementById(`newReview_${propertyId}`);
+        const newReview = reviewInput.value.trim();
+        if (newReview) {
+            const property = properties[document.getElementById("areaSelect").value].find(prop => prop.name.replace(/\s+/g, '_') === propertyId);
+            property.comments.push(newReview);
+            reviewInput.value = ""; // Clear the input
+            displayProperties(); // Refresh the display to show the new review
+                } else {
+            alert("Please enter a review before submitting.");
         }
     }
 </script>
