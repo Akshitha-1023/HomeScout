@@ -204,37 +204,38 @@
 
     const overallReviews = [];
 
-    function displayProperties() {
-        const areaSelect = document.getElementById("areaSelect");
-        const selectedArea = areaSelect.value;
-                const propertyDetails = document.getElementById("propertyDetails");
-        const comments = document.getElementById("comments");
-        propertyDetails.innerHTML = "";
-        comments.innerHTML = "";
-        
-        if (selectedArea && properties[selectedArea]) {
-            const availableProperties = properties[selectedArea];
-            availableProperties.forEach(property => {
+   function displayProperties() {
+        const area = document.getElementById("areaSelect").value;
+        const resultsDiv = document.getElementById("resultsList");
+        const propertyDetailsDiv = document.getElementById("propertyDetails");
+        const commentsDiv = document.getElementById("comments");
+
+        propertyDetailsDiv.innerHTML = "";
+        commentsDiv.innerHTML = "";
+
+        if (area) {
+            const selectedProperties = properties[area];
+            selectedProperties.forEach(property => {
                 const propertyDiv = document.createElement("div");
                 propertyDiv.className = "property";
                 propertyDiv.innerHTML = `
-                    <h3>${property.name}</h3>
                     <img src="${property.image}" alt="${property.name}">
+                    <h4>${property.name}</h4>
                     <p>Price: ${property.price}</p>
                     <p>Owner: ${property.owner}</p>
                     <p>Contact: ${property.contact}</p>
-                    <h4>User Comments:</h4>
-                    <div class="comments-section">
-                        ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
-                    </div>
+                    <button onclick="bookProperty('${property.name}')">Book Now</button>
+                    <h5>User Comments:</h5>
+                    <div class="comment">${property.comments.length > 0 ? property.comments.join('</div><div class="comment">') : 'No reviews yet.'}</div>
                 `;
-                propertyDetails.appendChild(propertyDiv);
+                 propertyDetailsDiv.appendChild(propertyDiv);
             });
-            document.getElementById("resultsList").style.display = "block";
-        } else {
-            propertyDetails.innerHTML = "<p>No properties found for this area.</p>";
-            document.getElementById("resultsList").style.display = "block";
+            resultsDiv.style.display = "block";
         }
+    }
+
+    function bookProperty(propertyName) {
+        alert(`You have selected to book the property: ${propertyName}. Please contact the owner for more details.`);
     }
 
     function submitReview() {
