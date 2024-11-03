@@ -116,6 +116,8 @@
             background-color: #d9edf7;
             padding: 20px;
             border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
         }
         .results h3 {
             margin-top: 0;
@@ -235,8 +237,10 @@
             });
         });
 
-        // Simple search functionality
-        function searchArea() {
-            const area = document.getElementById('areaInput').value;
-            const resultsText = document.getElementById('resultsText');
-            const results
+        // Sample data for area search
+        const sampleAreas = {
+            "Downtown": {
+                rating: 4.5,
+                popularity: "High",
+                length: "2 miles",
+                description: "Downtown offers vibrant nightlife and a variety of dining options
