@@ -89,6 +89,37 @@
             margin-bottom: 10px;
             color: #004494;
         }
+        .search-area {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-area input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-area button {
+            padding: 10px 15px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .search-area button:hover {
+            background-color: #004494;
+        }
+        .results {
+            margin-top: 20px;
+            background-color: #d9edf7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .results h3 {
+            margin-top: 0;
+        }
         .testimonials {
             background-color: #d9edf7;
             padding: 20px;
@@ -121,6 +152,7 @@
     <nav>
         <a href="#about">About</a>
         <a href="#features">Features</a>
+        <a href="#search">Search</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -159,6 +191,17 @@
                 </div>
             </div>
         </section>
+        <section id="search">
+            <h2>Search for Areas</h2>
+            <div class="search-area">
+                <input type="text" id="areaInput" placeholder="Enter area name..." />
+                <button onclick="searchArea()">Search</button>
+            </div>
+            <div class="results" id="searchResults" style="display:none;">
+                <h3>Search Results</h3>
+                <p id="resultsText"></p>
+            </div>
+        </section>
         <section id="testimonials">
             <h2>What Our Users Say</h2>
             <div class="testimonials">
@@ -191,6 +234,9 @@
                 });
             });
         });
-    </script>
-</body>
-</html>
+
+        // Simple search functionality
+        function searchArea() {
+            const area = document.getElementById('areaInput').value;
+            const resultsText = document.getElementById('resultsText');
+            const results
