@@ -2,92 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescout - Your Perfect Rental Home Finder</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f8ff;
+            background-color: #f7f9fc;
             margin: 0;
             padding: 0;
             color: #333;
             scroll-behavior: smooth;
         }
         header {
-            background-color: #0056b3;
-            color: #fff;
+            background-color: #007bff;
+            color: white;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         nav {
-            background-color: #004494;
             display: flex;
             justify-content: center;
+            background-color: #0056b3;
             padding: 10px 0;
         }
         nav a {
-            color: #fff;
+            color: white;
             margin: 0 20px;
             text-decoration: none;
             font-size: 16px;
-            transition: color 0.3s;
         }
         nav a:hover {
-            color: #ffcc00;
+            text-decoration: underline;
         }
         main {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         section {
             margin-bottom: 40px;
             padding: 20px;
             border-radius: 8px;
-            background-color: #e6f7ff;
+            background-color: #eaf0f7;
         }
-        h1, h2, h3 {
+        h2 {
             color: #0056b3;
         }
         footer {
-            background-color: #004494;
-            color: #fff;
+            background-color: #0056b3;
+            color: white;
             text-align: center;
             padding: 10px;
             position: relative;
             bottom: 0;
             width: 100%;
             margin-top: 20px;
-        }
-        .contact-info a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        .features-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-        }
-        .feature {
-            flex: 1 1 calc(30% - 20px);
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-        }
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #004494;
         }
         .search-area {
             margin: 20px 0;
@@ -101,7 +74,7 @@
         }
         .search-area button {
             padding: 10px 15px;
-            background-color: #0056b3;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -109,7 +82,7 @@
             margin-left: 10px;
         }
         .search-area button:hover {
-            background-color: #004494;
+            background-color: #0056b3;
         }
         .results {
             margin-top: 20px;
@@ -122,29 +95,6 @@
         .results h3 {
             margin-top: 0;
         }
-        .testimonials {
-            background-color: #d9edf7;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .testimonials h2 {
-            margin-top: 0;
-        }
-        .testimonials p {
-            font-style: italic;
-            margin: 10px 0;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .social-links a {
-            color: #0056b3;
-            text-decoration: none;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -155,43 +105,22 @@
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#search">Search</a>
-        <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
     </nav>
     <main>
         <section id="about">
             <h2>About Homescout</h2>
-            <p>Welcome to Homescout, the premier platform dedicated to connecting you with your ideal rental home. Our mission is to simplify the house-hunting experience by offering a wealth of information, user-friendly tools, and dedicated support.</p>
-            <p>Whether you're a first-time renter, a student, or a family looking for more space, we have a variety of listings to meet your needs. Discover neighborhoods, view amenities, and read reviews to find the perfect match for you and your lifestyle.</p>
+            <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home.</p>
         </section>
         <section id="features">
             <h2>Features</h2>
-            <div class="features-list">
-                <div class="feature">
-                    <h3>Detailed Contact Information</h3>
-                    <p>Easily access accurate contact details of property owners and agents for smooth communication.</p>
-                </div>
-                <div class="feature">
-                    <h3>Transparent Rent Prices</h3>
-                    <p>View and compare rental prices to find the best deals within your budget.</p>
-                </div>
-                <div class="feature">
-                    <h3>Area Popularity Insights</h3>
-                    <p>Get insights on neighborhood popularity, nearby amenities, and schools to make informed decisions.</p>
-                </div>
-                <div class="feature">
-                    <h3>User Ratings & Reviews</h3>
-                    <p>Read reviews from previous tenants and evaluate properties based on their experiences.</p>
-                </div>
-                <div class="feature">
-                    <h3>Interactive Map Search</h3>
-                    <p>Utilize our interactive map feature to find properties based on your preferred location.</p>
-                </div>
-                <div class="feature">
-                    <h3>Favorites & Alerts</h3>
-                    <p>Save your favorite listings and set alerts for new properties that match your criteria.</p>
-                </div>
-            </div>
+            <ul>
+                <li>Access to detailed contact information of property owners.</li>
+                <li>Transparent rental prices for easy comparisons.</li>
+                <li>User ratings and reviews to guide your choices.</li>
+                <li>Search multiple areas efficiently.</li>
+                <li>Favorites and alerts for new listings.</li>
+            </ul>
         </section>
         <section id="search">
             <h2>Search for Areas</h2>
@@ -201,46 +130,45 @@
             </div>
             <div class="results" id="searchResults" style="display:none;">
                 <h3>Search Results</h3>
-                <p id="resultsText"></p>
-            </div>
-        </section>
-        <section id="testimonials">
-            <h2>What Our Users Say</h2>
-            <div class="testimonials">
-                <p>"Homescout made my rental search so easy! I found the perfect apartment within days!" - Sarah K.</p>
-                <p>"The detailed information and user reviews were incredibly helpful. Highly recommend!" - John D.</p>
-                <p>"I loved the interactive map feature. It helped me find a place near my work!" - Emily R.</p>
+                <ul id="resultsList"></ul>
             </div>
         </section>
         <section id="contact">
             <h2>Contact Us</h2>
-            <p class="contact-info">For more details or inquiries, reach out to us at <a href="mailto:info@homescout.com">info@homescout.com</a>.</p>
-            <p>Follow us on our social media platforms for the latest updates and news:</p>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-            </div>
+            <p>For inquiries, reach out to us at <a href="mailto:info@homescout.com">info@homescout.com</a>.</p>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Homescout. All rights reserved.</p>
     </footer>
     <script>
-        // Smooth scrolling functionality
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        const areaData = {
+            "Downtown": { rating: 4.5, popularity: "High", length: "2 miles" },
+            "Uptown": { rating: 4.0, popularity: "Medium", length: "1.5 miles" },
+            "Suburbia": { rating: 3.8, popularity: "Medium", length: "3 miles" },
+            "Westside": { rating: 4.2, popularity: "High", length: "2.5 miles" },
+            "Eastside": { rating: 3.5, popularity: "Low", length: "4 miles" },
+        };
 
-        // Sample data for area search
-        const sampleAreas = {
-            "Downtown": {
-                rating: 4.5,
-                popularity: "High",
-                length: "2 miles",
-                description: "Downtown offers vibrant nightlife and a variety of dining options
+        function searchArea() {
+            const input = document.getElementById('areaInput').value.trim();
+            const resultsDiv = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = '';
+            
+            if (input) {
+                const areaInfo = areaData[input];
+                if (areaInfo) {
+                    resultsDiv.style.display = 'block';
+                    resultsList.innerHTML += <li>${input} - Rating: ${areaInfo.rating}, Popularity: ${areaInfo.popularity}, Length: ${areaInfo.length}</li>;
+                } else {
+                    resultsDiv.style.display = 'block';
+                    resultsList.innerHTML += <li>No results found for "${input}".</li>;
+                }
+            } else {
+                resultsDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
