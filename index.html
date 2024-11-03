@@ -7,189 +7,190 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #e6ffe6; /* Green background */
         }
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-        .features, .why-choose-us, .privacy-policy {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-        .features h3, .why-choose-us h3, .privacy-policy h3 {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .feature-item, .why-item {
-            margin: 10px 0;
-        }
-        .tick {
-            color: green;
-            font-weight: bold;
+        #results {
+            display: none;
         }
         .property {
             border: 1px solid #ccc;
-            margin: 10px;
             padding: 10px;
+            margin: 10px 0;
         }
-        .review-section {
-            margin-top: 10px;
+        .comment {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px dashed #aaa;
         }
-        .review-input {
-            width: 100%;
-            margin-top: 5px;
+        h3, h4, h5 {
+            color: #2c3e50;
         }
-        .footer {
-            text-align: center;
+        .features, .choose-us {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
             padding: 10px;
-            background-color: #f8f8f8;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #219653;
+        }
+        .policy {
+            margin-top: 20px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Welcome to Homescout</h1>
-        <p>Your trusted partner in finding the perfect rental home.</p>
-    </div>
+<h1>Welcome to Homescout</h1>
 
+<div id="features">
+    <h2>Features:</h2>
     <div class="features">
-        <h3>Features</h3>
-        <div class="feature-item"><span class="tick">✔️</span> User-friendly interface for easy navigation</div>
-        <div class="feature-item"><span class="tick">✔️</span> Comprehensive listings with detailed descriptions</div>
-        <div class="feature-item"><span class="tick">✔️</span> Advanced search filters to find your ideal home</div>
-        <div class="feature-item"><span class="tick">✔️</span> User reviews and ratings for properties</div>
+        ✔ Easy to use interface<br>
+        ✔ Wide variety of properties<br>
+        ✔ Secure payment options<br>
+        ✔ 24/7 customer support<br>
     </div>
+</div>
 
-    <div class="why-choose-us">
-        <h3>Why Choose Us</h3>
-        <div class="why-item">✔️ Trusted and verified listings</div>
-        <div class="why-item">✔️ Exceptional customer service</div>
-        <div class="why-item">✔️ Regular updates and new listings</div>
-        <div class="why-item">✔️ Easy booking and communication with property owners</div>
+<div id="choose-us">
+    <h2>Why Choose Us?</h2>
+    <div class="choose-us">
+        ✔ Best prices guaranteed<br>
+        ✔ Trusted by thousands of users<br>
+        ✔ Detailed property descriptions<br>
+        ✔ User reviews for better decisions<br>
     </div>
+</div>
 
-    <div class="privacy-policy">
-        <h3>Privacy Policy</h3>
-        <p>Your privacy is important to us. We are committed to protecting your personal information and your right to privacy. This policy describes how we collect, use, and share information about you when you visit our website.</p>
-        <p>We use your personal information to provide and improve our services, communicate with you, and comply with legal obligations. We will not share your personal information with third parties without your consent, except as required by law.</p>
-    </div>
+<div>
+    <h2>Search for Properties:</h2>
+    <select id="areaSelect" onchange="showProperties()">
+        <option value="">Select Area</option>
+        <option value="city view apartment">City View Apartment</option>
+        <option value="family home">Family Home</option>
+        <option value="oceanciew apartment">Oceanview Apartment</option>
+        <option value="riverfront apartment">Riverfront Apartment</option>
+    </select>
+</div>
 
-    <div>
-        <h3>Search Properties</h3>
-        <select id="areaSelect" onchange="showProperties()">
-            <option value="">Select Area</option>
-            <option value="1">Area 1</option>
-            <option value="2">Area 2</option>
-        </select>
-        <div id="propertyDetails"></div>
-    </div>
+<div id="results">
+    <h2>Available Properties:</h2>
+    <div id="propertyDetails"></div>
+</div>
 
-    <div class="footer">
-        <p>&copy; 2024 Homescout. All rights reserved.</p>
-    </div>
+<div>
+    <h2>User Reviews:</h2>
+    <div id="userReviews"></div>
+    <textarea id="userReviewInput" rows="3" cols="30" placeholder="Write your review..."></textarea>
+    <br>
+    <button class="button" onclick="submitReview()">Submit Review</button>
+</div>
 
-    <script>
-        const properties = {
-            1: [
-                {
-                    name: "City View Apartment",
-                    image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg",
-                    price: "$1500/month",
-                    owner: "John Doe",
-                    contact: "123-456-7890",
-                    comments: []
-                },
-                {
-                    name: "Family Home",
-                    image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg",
-                    price: "$2000/month",
-                    owner: "Jane Smith",
-                    contact: "987-654-3210",
-                    comments: []
-                }
-            ],
-            2: [
-                {
-                    name: "Oceanview Apartment",
-                    image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg",
-                    price: "$1800/month",
-                    owner: "Mike Johnson",
-                    contact: "456-789-0123",
-                    comments: []
-                },
-                {
-                    name: "Riverfront Apartment",
-                    image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg",
-                    price: "$1700/month",
-                    owner: "Sara Wilson",
-                    contact: "321-654-0987",
-                    comments: []
-                }
-            ]
-        };
+<div class="policy">
+    <h2>Privacy Policy:</h2>
+    <p>We value your privacy. Your personal information will only be used for booking purposes and will not be shared with third parties.</p>
+</div>
 
-        function showProperties() {
-            const selectedArea = document.getElementById("areaSelect").value;
-            const propertyDetailsDiv = document.getElementById("propertyDetails");
-            propertyDetailsDiv.innerHTML = "";
+<script>
+    const properties = {
+        "city view apartment": {
+            image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg",
+            price: "$2000",
+            owner: "John Doe",
+            contact: "123-456-7890",
+            comments: [],
+        },
+        "family home": {
+            image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg",
+            price: "$1500",
+            owner: "Jane Smith",
+            contact: "234-567-8901",
+            comments: [],
+        },
+        "oceanciew apartment": {
+            image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg",
+            price: "$2500",
+            owner: "Alice Johnson",
+            contact: "345-678-9012",
+            comments: [],
+        },
+        "riverfront apartment": {
+            image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg",
+            price: "$2200",
+            owner: "Bob Brown",
+            contact: "456-789-0123",
+            comments: [],
+        },
+    };
 
-            if (selectedArea) {
-                const selectedProperties = properties[selectedArea];
-                selectedProperties.forEach(property => {
-                    const propertyDiv = document.createElement("div");
-                    propertyDiv.className = "property";
-                    propertyDiv.innerHTML = `
-                        <h4>${property.name}</h4>
-                        <img src="${property.image}" alt="${property.name}" style="width: 100%; height: auto;">
-                        <p>Price: ${property.price}</p>
-                        <p>Owner: ${property.owner}</p>
-                        <p>Contact: ${property.contact}</p>
-                        <button onclick="bookProperty('${property.name}')">Book Now</button>
-                        <h5>User Reviews:</h5>
-                        <div class="review-section">
-                            <div id="reviews-${property.name}">
-                                ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
-                            </div>
-                            <textarea id="newReview-${property.name}" class="review-input" placeholder="Write your review..."></textarea>
-                            <button onclick="submitReview('${property.name}')">Submit Review</button>
-                        </div>
-                    `;
-                    propertyDetailsDiv.appendChild(propertyDiv);
-                });
-            } else {
-                propertyDetailsDiv.style.display = "none";
+    function showProperties() {
+        const areaSelect = document.getElementById("areaSelect");
+        const area = areaSelect.value;
+        const propertyDetailsDiv = document.getElementById("propertyDetails");
+        const resultsDiv = document.getElementById("results");
+        
+        propertyDetailsDiv.innerHTML = "";
+        
+        if (properties[area]) {
+            resultsDiv.style.display = "block";
+            const property = properties[area];
+            const propertyDiv = document.createElement("div");
+            propertyDiv.className = "property";
+            propertyDiv.innerHTML = `
+                <img src="${property.image}" alt="${area}" style="width:100%; max-width:300px;">
+                <h4>${area}</h4>
+                <p>Price: ${property.price}</p>
+                <p>Owner: ${property.owner}</p>
+                <p>Contact: ${property.contact}</p>
+                <h5>User Reviews:</h5>
+                ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
+                <h5>Write Your Review:</h5>
+                <textarea rows="2" cols="30" placeholder="Write your review..."></textarea>
+                <br>
+                <button class="button" onclick="submitPropertyReview('${area}')">Submit Review</button>
+                <br>
+                <button class="button">Book Now</button>
+            `;
+            propertyDetailsDiv.appendChild(propertyDiv);
+        } else {
+            resultsDiv.style.display = "none";
+        }
+    }
+
+    function submitReview() {
+        const reviewInput = document.getElementById("userReviewInput").value;
+        if (reviewInput) {
+            const userReviewsDiv = document.getElementById("userReviews");
+            const newComment = document.createElement("div");
+            newComment.className = "comment";
+            newComment.textContent = reviewInput;
+            userReviewsDiv.appendChild(newComment);
+            document.getElementById("userReviewInput").value = ""; // Clear input
+        }
+    }
+
+    function submitPropertyReview(propertyName) {
+        const propertyDivs = document.querySelectorAll('.property');
+        propertyDivs.forEach(div => {
+            const textarea = div.querySelector('textarea');
+            const reviewInput = textarea.value;
+            if (reviewInput && div.querySelector('h4').textContent === propertyName) {
+                const commentsDiv = div.querySelector('h5 + div');
+                const newComment = document.createElement("div");
+                newComment.className = "comment";
+                newComment.textContent = reviewInput;
+                commentsDiv.appendChild(newComment);
+                textarea.value = ""; // Clear input
             }
-        }
-
-        function bookProperty(propertyName) {
-            alert(`You have booked the ${propertyName}.`);
-        }
-
-        function submitReview(propertyName) {
-            const newReview = document.getElementById(`newReview-${propertyName}`).value;
-            if (newReview) {
-                properties[document.getElementById("areaSelect").value].find(property => property.name === propertyName).comments.push(newReview);
-                document.getElementById(`reviews-${propertyName}`).innerHTML += `<div class="comment">${newReview}</div>`;
-                document.getElementById(`newReview-${propertyName}`).value = ""; // Clear input
-            }
-        }
-
-        const overallReviews = [];
-
-        function submitOverallReview() {
-            const newOverallReview = document.getElementById("newOverallReview").value;
-            if (newOverallReview) {
-                overallReviews.push(newOverallReview);
-                const overallCommentsDiv = document.getElementById("overallComments");
-                overallCommentsDiv.innerHTML += `<div class="comment">${newOverallReview}</div>`;
-                document.getElementById("newOverallReview").value = ""; // Clear input
-            }
-        }
-    </script>
+        });
+    }
+</script>
 </body>
 </html>
