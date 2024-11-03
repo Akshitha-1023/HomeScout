@@ -1,8 +1,3 @@
-Let’s include a user review section in your Homescout website code. Here’s how you can modify your existing HTML to add a section for user reviews. This section will allow users to submit their reviews, and you can display them below the properties.
-
-### Updated HTML Code:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,12 +97,6 @@ Let’s include a user review section in your Homescout website code. Here’s h
             bottom: 0;
             width: 100%;
         }
-        .review-section {
-            margin: 20px;
-            padding: 15px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
     </style>
 </head>
 <body>
@@ -141,13 +130,6 @@ Let’s include a user review section in your Homescout website code. Here’s h
     <div id="comments"></div>
 </div>
 
-<div class="review-section">
-    <h3>User Reviews</h3>
-    <textarea id="reviewInput" placeholder="Write your review here..." rows="4" style="width: 100%; margin-bottom: 10px;"></textarea>
-    <button onclick="submitReview()">Submit Review</button>
-    <div id="reviewsDisplay" style="margin-top: 15px;"></div>
-</div>
-
 <footer>
     <p>&copy; 2024 Homescout. All rights reserved.</p>
 </footer>
@@ -155,24 +137,22 @@ Let’s include a user review section in your Homescout website code. Here’s h
 <script>
     const properties = {
         "Downtown": [
-            { name: "Luxury Condo", price: "$1500/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Great location!", "Loved the amenities!"] },
-            { name: "City View Apartment", price: "$1200/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg=City+View+Apartment", comments: ["Beautiful skyline views.", "Perfect for city lovers."] }
+            { name: "City View Apartment", price: "$1200/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg", comments: ["Beautiful skyline views.", "Perfect for city lovers."] },
+            { name: "Luxury Condo", price: "$1500/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Great location!", "Loved the amenities!"] }
         ],
         "Suburbs": [
-            { name: "Cozy Family House", price: "$1100/month", owner: "Alice Johnson", contact: "555-555-5555", image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg=Cozy+Family+House", comments: ["Ideal for families.", "Spacious backyard."] }
+            { name: "Cozy Family House", price: "$1100/month", owner: "Alice Johnson", contact: "555-555-5555", image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg", comments: ["Ideal for families.", "Spacious backyard."] }
         ],
         "Uptown": [
-            { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://images.squarespace-cdn.com/content/v1/5748ef421d07c0e0855afd96/95f8d432-4a21-4b9d-b92d-53f330bf662b/Screenshot+2024-04-30+at+5.40.50%E2%80%AFAM.png=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
+            { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
         ],
         "Oceanview": [
-            { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg=Beachfront+Property", comments: ["Stunning views!", "Great for vacations."] }
+            { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg", comments: ["Stunning views!", "Great for vacations."] }
         ],
         "Riverdale": [
-            { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg=Riverfront+Cabin", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
+            { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
         ]
     };
-
-    const userReviews = [];
 
     function displayProperties() {
         const area = document.getElementById("areaSelect").value;
@@ -210,26 +190,6 @@ Let’s include a user review section in your Homescout website code. Here’s h
         } else {
             resultsDiv.style.display = "none";
         }
-    }
-
-    function submitReview() {
-        const reviewInput = document.getElementById("reviewInput").value;
-        if (reviewInput) {
-            userReviews.push(reviewInput);
-            document.getElementById("reviewInput").value = ""; // Clear the input
-            displayReviews();
-        }
-    }
-
-    function displayReviews() {
-        const reviewsDisplay = document.getElementById("reviewsDisplay");
-               reviewsDisplay.innerHTML = "";
-        userReviews.forEach((review, index) => {
-            const reviewDiv = document.createElement("div");
-            reviewDiv.className = "comment";
-            reviewDiv.innerText = review;
-            reviewsDisplay.appendChild(reviewDiv);
-        });
     }
 </script>
 
