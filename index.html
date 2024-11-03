@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescout - Your Perfect Rental Home Finder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f7f9fc;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             color: #333;
         }
         header {
-            background-color: #007bff;
+            background-color: #4a90e2;
             color: white;
             padding: 20px;
             text-align: center;
@@ -25,25 +25,10 @@
             font-size: 36px;
         }
         header h2 {
-            font-size: 24px;
-            font-weight: normal;
-            color: #e1e1e1;
+            font-size: 18px;
+            font-weight: 300;
             margin-top: 5px;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #0056b3;
-            padding: 10px 0;
-        }
-        nav a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        nav a:hover {
-            text-decoration: underline;
+            color: #e1e1e1;
         }
         main {
             max-width: 1200px;
@@ -53,31 +38,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #eaf0f7;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        h2 {
-            color: #0056b3;
-            flex-basis: 100%;
-        }
-        footer {
-            background-color: #0056b3;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            margin-top: 20px;
-        }
         .search-area {
-            margin: 20px 0;
+            margin-bottom: 20px;
             text-align: center;
         }
         .search-area select {
@@ -86,52 +48,57 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            margin-right: 10px;
         }
         .search-area button {
             padding: 10px 15px;
-            background-color: #007bff;
+            background-color: #4a90e2;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-left: 10px;
+            transition: background-color 0.3s;
         }
         .search-area button:hover {
-            background-color: #0056b3;
+            background-color: #357ab8;
         }
         .results {
             margin-top: 20px;
-            background-color: #d9edf7;
+            background-color: #eaf0f7;
             padding: 20px;
             border-radius: 8px;
-            max-height: 300px;
-            overflow-y: auto;
+            display: none;
         }
-        .results h3 {
-            margin-top: 0;
+        .property {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
         }
-        .comments {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f1f1f1;
-            border-radius: 8px;
-            flex-basis: 100%;
+        .property h4 {
+            color: #007bff;
+            margin: 0;
         }
-        .comments h3 {
-            margin-top: 0;
+        .property p {
+            margin: 5px 0;
         }
-        .comments p {
-            margin: 10px 0;
-        }
-        .info {
-            flex-basis: 45%;
-            margin-right: 20px;
-        }
-        .contact-info {
+        .contact-info, .booking {
             margin-top: 10px;
             padding: 10px;
-            background-color: #eaf0f7;
+            background-color: #f7f7f7;
             border-radius: 5px;
+        }
+        .book-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .book-btn:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -140,77 +107,75 @@
         <h1>Homescout</h1>
         <h2>Your Perfect Rental Home Finder</h2>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#search">Search</a>
-        <a href="#comments">User Comments</a>
-        <a href="#contact">Contact</a>
-    </nav>
     <main>
-        <section id="about">
-            <h2>About Homescout</h2>
-            <div class="info">
-                <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home. We aim to simplify the renting process by providing comprehensive information on various rental properties in your desired area. Our platform helps you make informed decisions by providing key insights and features tailored to your needs.</p>
-            </div>
+        <section class="search-area">
+            <h2>Search for Available Rentals</h2>
+            <select id="areaSelect" onchange="showProperties()">
+                <option value="">Select an area...</option>
+                <option value="Downtown">Downtown</option>
+                <option value="Uptown">Uptown</option>
+                <option value="Suburbia">Suburbia</option>
+                <option value="Westside">Westside</option>
+                <option value="Eastside">Eastside</option>
+            </select>
+            <button onclick="showProperties()">Search</button>
         </section>
-        <section id="features">
-            <h2>Features</h2>
-            <div class="info">
-                <p>Homescout comes packed with powerful features designed to enhance your rental search experience:</p>
-                <ul>
-                    <li>Access to detailed contact information of property owners for easy communication.</li>
-                    <li>Transparent rental prices to facilitate quick and easy comparisons.</li>
-                    <li>User ratings and reviews that guide your choices and ensure quality.</li>
-                    <li>Search functionality that allows you to explore multiple areas with ease.</li>
-                    <li>Favorites and alerts for new listings, so you never miss out on opportunities.</li>
-                    <li>Detailed insights into area ratings, popularity, and geographical length to help you find the perfect neighborhood.</li>
-                    <li>Intuitive design that simplifies navigation and enhances user experience.</li>
-                </ul>
-                <p>With Homescout, your search for the perfect rental home becomes a breeze.</p>
+        <div class="results" id="resultsList">
+            <h3>Available Properties</h3>
+            <div class="property" id="propertyDetails">
+                <!-- Property details will be displayed here dynamically -->
             </div>
-        </section>
-        <section id="search">
-            <h2>Search for Areas</h2>
-            <div class="search-area">
-                <select id="areaSelect" onchange="showInfo()">
-                    <option value="">Select an area...</option>
-                    <option value="Downtown">Downtown</option>
-                    <option value="Uptown">Uptown</option>
-                    <option value="Suburbia">Suburbia</option>
-                    <option value="Westside">Westside</option>
-                    <option value="Eastside">Eastside</option>
-                </select>
-                <button onclick="searchArea()">Search</button>
+            <div class="contact-info" id="contactInfo">
+                <!-- Contact details will be displayed here -->
             </div>
-            <div class="results" id="searchResults" style="display:none;">
-                <h3>Search Results</h3>
-                <ul id="resultsList"></ul>
-                <div class="contact-info" id="contactInfo" style="display:none;"></div>
+            <div class="booking" id="bookingInfo">
+                <button class="book-btn" onclick="bookProperty()">Book this Property</button>
             </div>
-        </section>
-        <section id="comments">
-            <h2>User Comments</h2>
-            <div class="comments">
-                <h3>What Our Users Are Saying</h3>
-                <p>"Homescout made my rental search so easy! I found my perfect apartment in no time." - Alex J.</p>
-                <p>"I love the detailed area ratings and reviews. It helped me choose the right neighborhood." - Priya K.</p>
-                <p>"The search feature is user-friendly, and I appreciate the updates on new listings!" - Mark T.</p>
-                <p>"Thanks to Homescout, I moved into a great rental property that I love!" - Sarah M.</p>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>For inquiries, reach out to us at <a href="mailto:info@homescout.com">info@homescout.com</a>.</p>
-        </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Homescout. All rights reserved.</p>
-    </footer>
     <script>
-        const areaData = {
-            "Downtown": { rating: 4.5, popularity: "High", length: "2 miles", contact: "John Doe - 555-1234" },
-            "Uptown": { rating: 4.0, popularity: "Medium", length: "1.5 miles", contact: "Jane Smith - 555-5678" },
-            "Suburbia": { rating: 3.8, popularity: "Medium", length: "3 miles", contact: "Emily Johnson - 555-8765" },
-            "Westside": { rating: 4.2, popularity: "High", length: "2.5 miles", contact: "Michael Brown - 555-4321" },
-            "Eastside": { rating:
+        const properties = {
+            "Downtown": [
+                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890" },
+                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210" }
+            ],
+            "Uptown": [
+                { name: "Spacious Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234" }
+            ],
+            "Suburbia": [
+                { name: "Family House", price: "$900/month", owner: "Alice Johnson", contact: "321-654-9870" }
+            ],
+            // More properties can be added here
+        };
+
+        function showProperties() {
+            const area = document.getElementById("areaSelect").value;
+            const resultsList = document.getElementById("resultsList");
+            const propertyDetails = document.getElementById("propertyDetails");
+            const contactInfo = document.getElementById("contactInfo");
+
+            if (area && properties[area]) {
+                resultsList.style.display = "block";
+                propertyDetails.innerHTML = properties[area].map(prop => `
+                    <div>
+                        <h4>${prop.name}</h4>
+                        <p>Price: ${prop.price}</p>
+                    </div>
+                `).join('');
+
+                contactInfo.innerHTML = properties[area].map(prop => `
+                    <p>Owner: ${prop.owner}, Contact: ${prop.contact}</p>
+                `).join('');
+            } else {
+                resultsList.style.display = "none";
+                propertyDetails.innerHTML = "";
+                contactInfo.innerHTML = "";
+            }
+        }
+
+        function bookProperty() {
+            alert("Thank you for booking! The property owner will contact you soon.");
+        }
+    </script>
+</body>
+</html>
