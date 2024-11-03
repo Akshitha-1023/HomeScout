@@ -130,6 +130,20 @@
     <p>Whether you're looking for a cozy apartment downtown, a spacious house in the suburbs, or a luxurious beachfront property, we have options for everyone. Our goal is to simplify your search process by providing you with all the necessary tools and information at your fingertips.</p>
     <p>Explore the properties, check their ratings, and read user comments to make an informed decision. Your perfect rental home is just a few clicks away!</p>
 </div>
+    <div class="features">
+    <h2>Features</h2>
+    <p>✔ User-friendly interface<br>✔ Diverse property listings<br>✔ Detailed property information<br>✔ Contact information for owners<br>✔ User reviews and ratings</p>
+</div>
+
+<div class="policy">
+    <h2>Why Choose Homescout?</h2>
+    <p>At Homescout, we prioritize your rental experience. We offer a variety of listings tailored to your needs, along with easy navigation and direct communication with property owners. Our platform is designed to help you find the perfect rental home effortlessly.</p>
+</div>
+
+<div class="overall-reviews">
+    <h2>Overall Reviews</h2>
+    <p>"Homescout helped me find my dream apartment! The user interface is fantastic." - Alex<br>"Great selection of properties and easy to navigate." - Maria<br>"Highly recommend for anyone searching for rentals!" - John</p>
+</div>
 
 <div class="search-area">
     <select id="areaSelect" onchange="displayProperties()">
@@ -169,7 +183,14 @@
 <script>
     const properties = {
         "Downtown": [
-            { name: "Luxury Condo", price: "$1500/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Great location!", "Loved the amenities!"] },
+            {
+                name: "Luxury Condo",
+                price: "$1500/month",
+                owner: "John Doe",
+                contact: "123-456-7890",
+                image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/494462546.jpg?k=b1f0a4b48fb8ab92d7e7a05216ed16ae95eaf56093b67553a41a0f4ffbbe8c2c&o=&hp=1",
+                comments: ["Great location!", "Loved the amenities!"]
+            },
             { name: "City View Apartment", price: "$1200/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg", comments: ["Beautiful skyline views.", "Perfect for city lovers."] }
         ],
         "Suburbs": [
