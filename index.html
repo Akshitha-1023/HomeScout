@@ -12,47 +12,48 @@
             margin: 0;
             padding: 0;
             color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #30475e;
             color: #f5f5f5;
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         header h1 {
-            font-size: 50px;
+            font-size: 52px;
             margin: 0;
             font-weight: 600;
         }
         header h2 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 300;
-            margin-top: 5px;
+            margin-top: 10px;
         }
         main {
-            max-width: 1300px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 30px;
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         .info-section {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             text-align: center;
         }
         .info-section img {
             width: 100%;
-            max-height: 350px;
+            max-height: 400px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .info-section p {
             font-size: 20px;
             line-height: 1.8;
             font-family: 'Lato', sans-serif;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .search-area {
             margin-bottom: 40px;
@@ -83,11 +84,11 @@
             display: none;
             background-color: #f0f0f0;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
         }
         .property {
-            margin-bottom: 25px;
-            padding: 18px;
+            margin-bottom: 30px;
+            padding: 20px;
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -96,38 +97,38 @@
             align-items: center;
         }
         .property img {
-            width: 90%;
-            height: auto;
+            width: 100%;
+            max-width: 600px;
             border-radius: 12px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .property h4 {
             color: #30475e;
-            margin: 0 0 8px;
+            margin: 0 0 10px;
         }
         .property p {
             margin: 6px 0;
-            font-size: 17px;
+            font-size: 18px;
         }
         .contact-info, .booking {
-            margin-top: 18px;
+            margin-top: 20px;
             text-align: center;
         }
         .user-comments {
-            margin-top: 20px;
+            margin-top: 30px;
             background-color: #e9f5fc;
-            padding: 18px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 12px;
         }
         .user-comments h5 {
-            margin: 0 0 12px;
-            font-size: 22px;
+            margin: 0 0 14px;
+            font-size: 24px;
             color: #30475e;
         }
         .comment {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-style: italic;
-            font-size: 16px;
+            font-size: 17px;
         }
     </style>
 </head>
@@ -138,8 +139,8 @@
     </header>
     <main>
         <section class="info-section">
-            <img src="https://via.placeholder.com/1300x350?text=Find+Your+Dream+Home" alt="Happy Family in Home">
-            <p>Welcome to Homescout, your dedicated partner in discovering your ideal rental home. With a wide selection of properties and detailed information on rent, neighborhood popularity, and contact information, Homescout makes your home search smooth and convenient. Explore areas known for their vibrant lifestyle or serene environments, all tailored to your preferences.</p>
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fapartment-living-people&psig=AOvVaw1AlT4IUq1pcCS9iHMliQEC&ust=1730726811447000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNjcjYiiwIkDFQAAAAAdAAAAABAE" alt="Happy Family in Home">
+            <p>Welcome to Homescout, your go-to solution for finding rental properties that fit your lifestyle. Whether you're searching for modern urban living or cozy suburban homes, Homescout offers comprehensive details on rental prices, area popularity, ratings, and contact information. Our platform is designed to make your home search intuitive, efficient, and enjoyable.</p>
         </section>
         <section class="search-area">
             <h2>Search for Rental Areas</h2>
@@ -150,6 +151,8 @@
                 <option value="Suburbia">Suburbia</option>
                 <option value="Westside">Westside</option>
                 <option value="Eastside">Eastside</option>
+                <option value="Greenview">Greenview</option>
+                <option value="Mapleton">Mapleton</option>
             </select>
             <button onclick="displayProperties()">Search</button>
         </section>
@@ -169,13 +172,15 @@
     <script>
         const properties = {
             "Downtown": [
-                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/400x300?text=Modern+Loft", comments: ["Great location!", "Close to amenities.", "Safe neighborhood."] },
-                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://via.placeholder.com/400x300?text=Cozy+Apartment", comments: ["Affordable and well-maintained.", "Spacious rooms."] }
+                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Modern+Loft", comments: ["Great location!", "Close to all major points of interest.", "Feels safe and vibrant."] },
+                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://via.placeholder.com/600x400?text=Cozy+Apartment", comments: ["Affordable and spacious.", "Well-maintained and clean."] }
             ],
             "Uptown": [
-                { name: "Spacious Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", image: "https://via.placeholder.com/400x300?text=Spacious+Condo", comments: ["Elegant interiors.", "Great community environment."] }
+                { name: "Luxury Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Beautiful interiors.", "Amazing community amenities.", "Worth the price."] }
             ],
-            // Add more areas and properties here
+            "Suburbia": [
+                { name: "Family Home", price: "$900/month", owner: "Emily Clark", contact: "333-222-1111", image: "https://via.placeholder.com/600x400?text=Family+Home", comments: ["Perfect for families.", "Quiet and friendly neighborhood."] }
+            ]
         };
 
         function displayProperties() {
@@ -211,6 +216,7 @@
         function bookProperty() {
             alert("Thank you for booking! The property owner will contact you soon.");
         }
-    </script>
+    </
+            </script>
 </body>
 </html>
