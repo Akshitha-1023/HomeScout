@@ -98,23 +98,23 @@
             bottom: 0;
             width: 100%;
         }
-        .review-section, .overall-review-section {
+        .review-section {
             margin: 20px;
-            padding: 15px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .review-section textarea, .overall-review-section textarea {
-            width: 100%;
-            height: 60px;
-            margin-bottom: 10px;
             padding: 10px;
-            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .review-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
+            font-size: 16px;
         }
-        .review-section button, .overall-review-section button {
-            width: 100%;
+        .review-section h3 {
+            font-size: 24px;
         }
     </style>
 </head>
@@ -129,15 +129,6 @@
     <p>Welcome to Homescout, the ultimate solution for all your rental needs! Our platform connects renters with a wide variety of rental properties across multiple areas, offering detailed information and user-friendly features.</p>
     <p>Whether you're looking for a cozy apartment downtown, a spacious house in the suburbs, or a luxurious beachfront property, we have options for everyone. Our goal is to simplify your search process by providing you with all the necessary tools and information at your fingertips.</p>
     <p>Explore the properties, check their ratings, and read user comments to make an informed decision. Your perfect rental home is just a few clicks away!</p>
-    <h3>Why Choose Us?</h3>
-    <p>At Homescout, we provide:</p>
-    <ul>
-        <li>A comprehensive list of rental properties.</li>
-        <li>User-friendly interface for easy navigation.</li>
-        <li>Transparent information about each property.</li>
-        <li>Real-time user reviews to help you decide.</li>
-        <li>Dedicated support to assist with any inquiries.</li>
-    </ul>
 </div>
 
 <div class="search-area">
@@ -155,22 +146,19 @@
 <div class="results" id="resultsList">
     <h3>Available Properties:</h3>
     <div id="propertyDetails"></div>
-    <div id="comments"></div>
 </div>
 
 <div class="review-section">
     <h3>User Reviews</h3>
     <textarea id="userReview" placeholder="Write your review here..."></textarea>
     <button onclick="submitReview()">Submit Review</button>
-    <h4>Reviews:</h4>
     <div id="comments"></div>
 </div>
 
-<div class="overall-review-section">
-    <h3>Overall Website Reviews</h3>
-    <textarea id="overallReview" placeholder="Write your overall review about the website..."></textarea>
+<div class="review-section overall-review-section">
+    <h3>Overall Website Review</h3>
+    <textarea id="overallReview" placeholder="Write your overall review here..."></textarea>
     <button onclick="submitOverallReview()">Submit Overall Review</button>
-    <h4>Overall Reviews:</h4>
     <div class="overall-review-display"></div>
 </div>
 
@@ -210,11 +198,11 @@
         if (area) {
             const selectedProperties = properties[area];
             selectedProperties.forEach(property => {
-                                const propertyDiv = document.createElement("div");
+                const propertyDiv = document.createElement("div");
                 propertyDiv.className = "property";
                 propertyDiv.innerHTML = `
-                    <h4>${property.name}</h4>
                     <img src="${property.image}" alt="${property.name}">
+                    <h4>${property.name}</h4>
                     <p>Price: ${property.price}</p>
                     <p>Owner: ${property.owner}</p>
                     <p>Contact: ${property.contact}</p>
@@ -222,27 +210,26 @@
                     <h5>User Comments:</h5>
                     <div class="comment">${property.comments.length > 0 ? property.comments.join('</div><div class="comment">') : 'No reviews yet.'}</div>
                 `;
-                propertyDetailsDiv.appendChild(propertyDiv);
+                                propertyDetailsDiv.appendChild(propertyDiv);
             });
             resultsDiv.style.display = "block";
-        } else {
-            resultsDiv.style.display = "none";
         }
     }
 
     function bookProperty(propertyName) {
-        alert(`Booking request submitted for ${propertyName}!`);
+        alert(`You have selected to book the property: ${propertyName}. Please contact the owner for more details.`);
     }
 
     function submitReview() {
         const userReview = document.getElementById("userReview").value;
+        const commentsDiv = document.getElementById("comments");
+
         if (userReview) {
-            const commentsDiv = document.getElementById("comments");
-            const newComment = document.createElement("div");
-            newComment.className = "comment";
-            newComment.innerText = userReview;
-            commentsDiv.appendChild(newComment);
-            document.getElementById("userReview").value = ""; // Clear the textarea
+            const commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.textContent = userReview;
+            commentsDiv.appendChild(commentDiv);
+            document.getElementById("userReview").value = "";
         } else {
             alert("Please write a review before submitting.");
         }
@@ -250,13 +237,14 @@
 
     function submitOverallReview() {
         const overallReview = document.getElementById("overallReview").value;
+        const overallDisplayDiv = document.querySelector(".overall-review-display");
+
         if (overallReview) {
-            const overallReviewDiv = document.querySelector(".overall-review-display");
-            const newOverallReview = document.createElement("div");
-            newOverallReview.className = "comment";
-            newOverallReview.innerText = overallReview;
-            overallReviewDiv.appendChild(newOverallReview);
-            document.getElementById("overallReview").value = ""; // Clear the textarea
+            const overallDiv = document.createElement("div");
+            overallDiv.className = "comment";
+            overallDiv.textContent = overallReview;
+            overallDisplayDiv.appendChild(overallDiv);
+            document.getElementById("overallReview").value = "";
         } else {
             alert("Please write an overall review before submitting.");
         }
