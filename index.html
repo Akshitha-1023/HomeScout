@@ -1,256 +1,157 @@
-Here's the fully revised HTML code, incorporating the features you requested, including images, extended content, user comments, and a more sophisticated design:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescout - Your Perfect Rental Home Finder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f5f7fa;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            line-height: 1.6;
+            background-color: #f2f2f2;
         }
         header {
-            background-color: #30475e;
-            color: #f5f5f5;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
             text-align: center;
-            padding: 40px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        header h1 {
-            font-size: 52px;
+        h1 {
             margin: 0;
-            font-weight: 600;
         }
-        header h2 {
-            font-size: 26px;
-            font-weight: 300;
-            margin-top: 10px;
-        }
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        .info-section {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        .info-section img {
-            width: 100%;
-            max-height: 400px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-        }
-        .info-section p {
-            font-size: 20px;
-            line-height: 1.8;
-            font-family: 'Lato', sans-serif;
-            margin-bottom: 30px;
+        h2 {
+            font-size: 24px;
         }
         .search-area {
-            margin-bottom: 40px;
-            text-align: center;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
         }
-        .search-area select, .search-area input {
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 18px;
-            border: 1px solid #ddd;
-            margin-right: 12px;
-            width: 320px;
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
         }
-        .search-area button {
-            padding: 14px 24px;
-            background-color: #30475e;
-            color: #f5f5f5;
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
             cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .search-area button:hover {
-            background-color: #1f3348;
-        }
-        .results {
-            display: none;
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 12px;
         }
         .property {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #fff;
+            background: white;
             border: 1px solid #ddd;
-            border-radius: 10px;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .property img {
             width: 100%;
-            max-width: 600px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            height: auto;
+            border-radius: 5px;
         }
-        .property h4 {
-            color: #30475e;
-            margin: 0 0 10px;
-        }
-        .property p {
-            margin: 6px 0;
-            font-size: 18px;
-        }
-        .contact-info, .booking {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .user-comments {
-            margin-top: 30px;
-            background-color: #e9f5fc;
-            padding: 20px;
-            border-radius: 12px;
-        }
-        .user-comments h5 {
-            margin: 0 0 14px;
-            font-size: 24px;
-            color: #30475e;
+        .results {
+            display: none;
+            margin: 20px;
         }
         .comment {
-            margin-bottom: 14px;
-            font-style: italic;
-            font-size: 17px;
+            background: #f9f9f9;
+            padding: 5px;
+            margin: 5px;
+            border-left: 4px solid #4CAF50;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Homescout</h1>
-        <h2>Your Perfect Rental Home Finder</h2>
-    </header>
-    <main>
-        <section class="info-section">
-            <img src="https://via.placeholder.com/1400x400?text=Find+Your+Dream+Home" alt="Happy Family in Home">
-            <p>Welcome to Homescout, your go-to solution for finding rental properties that fit your lifestyle. Whether you're searching for modern urban living or cozy suburban homes, Homescout offers comprehensive details on rental prices, area popularity, ratings, and contact information. Our platform is designed to make your home search intuitive, efficient, and enjoyable.</p>
-        </section>
-        <section class="search-area">
-            <h2>Search for Rental Areas</h2>
-            <select id="areaSelect" onchange="displayProperties()">
-                <option value="">Select an area...</option>
-                <option value="Downtown">Downtown</option>
-                <option value="Uptown">Uptown</option>
-                <option value="Suburbia">Suburbia</option>
-                <option value="Westside">Westside</option>
-                <option value="Eastside">Eastside</option>
-                <option value="Greenview">Greenview</option>
-                <option value="Mapleton">Mapleton</option>
-                <option value="Oceanview">Oceanview</option>
-                <option value="Riverdale">Riverdale</option>
-            </select>
-            <button onclick="displayProperties()">Search</button>
-        </section>
-        <div class="results" id="resultsList">
-            <h3>Available Properties</h3>
-            <div id="propertyDetails"></div>
-            <div class="contact-info" id="contactInfo"></div>
-            <div class="user-comments" id="commentsSection">
-                <h5>User Reviews</h5>
-                <div id="comments"></div>
-            </div>
-            <div class="booking" id="bookingInfo">
-                <button class="book-btn" onclick="bookProperty()">Book this Property</button>
-            </div>
-        </div>
-    </main>
-    <script>
-        const properties = {
-            "Downtown": [
-                { name: "Modern Loft", price: "$1200/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Modern+Loft", comments: ["Great location!", "Close to all major points of interest.", "Feels safe and vibrant."] },
-                { name: "Cozy Apartment", price: "$1000/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://via.placeholder.com/600x400?text=Cozy+Apartment", comments: ["Affordable and spacious.", "Well-maintained and clean."] }
-            ],
-            "Uptown": [
-                { name: "Luxury Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Beautiful interiors.", "Amazing community amenities.", "Worth the price."] }
-            ],
-            "Suburbia": [
-                { name: "Family Home", price: "$900/month", owner: "Emily Clark", contact: "333-222-1111", image: "https://via.placeholder.com/600x400?text=Family+Home", comments: ["Perfect for families.", "Quiet and friendly neighborhood."] }
-            ],
-            "Westside": [
-                { name: "Charming Bungalow", price: "$850/month", owner: "Paul Wilson", contact: "444-555-6666", image: "https://via.placeholder.com/600x400?text=Charming+Bungalow", comments: ["Great backyard!", "Very cozy and inviting."] }
-            ],
-            "Eastside": [
-                { name: "Stylish Flat", price: "$1100/month", owner: "Sara Johnson", contact: "777-888-9999", image: "https://via.placeholder.com/600x400?text=Stylish+Flat", comments: ["Nice neighborhood.", "Close to parks and schools."] }
-            ],
-            "Greenview": [
-                { name: "Spacious Townhouse", price: "$1300/month", owner: "Linda Parker", contact: "111-222-3333", image: "https://via.placeholder.com/600x400?text=Spacious+Townhouse", comments: ["Perfect for couples.", "Quiet and safe area."] }
-            ],
-            "Mapleton": [
-                                { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
-            ],
-            "Oceanview": [
-                { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://via.placeholder.com/600x400?text=Beachfront+Property", comments: ["Stunning views!", "Great for vacations."] }
-            ],
-            "Riverdale": [
-                { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://via.placeholder.com/600x400?text=Riverfront+Cabin", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
-            ]
-        };
 
-        function displayProperties() {
-            const area = document.getElementById("areaSelect").value;
-            const resultsDiv = document.getElementById("resultsList");
-            const propertyDetailsDiv = document.getElementById("propertyDetails");
-            const contactInfoDiv = document.getElementById("contactInfo");
-            const commentsDiv = document.getElementById("comments");
+<header>
+    <h1>Homescout</h1>
+    <h2>Your Perfect Rental Home Finder</h2>
+</header>
 
-            propertyDetailsDiv.innerHTML = "";
-            contactInfoDiv.innerHTML = "";
-            commentsDiv.innerHTML = "";
+<div class="search-area">
+    <select id="areaSelect" onchange="displayProperties()">
+        <option value="">Select an area...</option>
+        <option value="Downtown">Downtown</option>
+        <option value="Suburbs">Suburbs</option>
+        <option value="Uptown">Uptown</option>
+        <option value="Oceanview">Oceanview</option>
+        <option value="Riverdale">Riverdale</option>
+    </select>
+    <button onclick="displayProperties()">Search</button>
+</div>
 
-            if (area) {
-                const selectedProperties = properties[area];
-                selectedProperties.forEach(property => {
-                    const propertyDiv = document.createElement("div");
-                    propertyDiv.className = "property";
-                    propertyDiv.innerHTML = `
-                        <img src="${property.image}" alt="${property.name}">
-                        <h4>${property.name}</h4>
-                        <p>Price: ${property.price}</p>
-                        <p>Owner: ${property.owner}</p>
-                        <div class="contact-info">
-                            <p>Contact: ${property.contact}</p>
-                        </div>
-                    `;
-                    propertyDetailsDiv.appendChild(propertyDiv);
+<div class="results" id="resultsList">
+    <h3>Available Properties:</h3>
+    <div id="propertyDetails"></div>
+    <div id="comments"></div>
+</div>
 
-                    // Display comments
-                    property.comments.forEach(comment => {
-                        const commentDiv = document.createElement("div");
-                        commentDiv.className = "comment";
-                        commentDiv.innerText = comment;
-                        commentsDiv.appendChild(commentDiv);
-                    });
+<script>
+    const properties = {
+        "Downtown": [
+            { name: "Luxury Condo", price: "$1500/month", owner: "John Doe", contact: "123-456-7890", image: "https://via.placeholder.com/600x400?text=Luxury+Condo", comments: ["Great location!", "Loved the amenities!"] },
+            { name: "City View Apartment", price: "$1200/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://via.placeholder.com/600x400?text=City+View+Apartment", comments: ["Beautiful skyline views.", "Perfect for city lovers."] }
+        ],
+        "Suburbs": [
+            { name: "Cozy Family House", price: "$1100/month", owner: "Alice Johnson", contact: "555-555-5555", image: "https://via.placeholder.com/600x400?text=Cozy+Family+House", comments: ["Ideal for families.", "Spacious backyard."] }
+        ],
+        "Uptown": [
+            { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
+        ],
+        "Oceanview": [
+            { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://via.placeholder.com/600x400?text=Beachfront+Property", comments: ["Stunning views!", "Great for vacations."] }
+        ],
+        "Riverdale": [
+            { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://via.placeholder.com/600x400?text=Riverfront+Cabin", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
+        ]
+    };
+
+    function displayProperties() {
+        const area = document.getElementById("areaSelect").value;
+        const resultsDiv = document.getElementById("resultsList");
+        const propertyDetailsDiv = document.getElementById("propertyDetails");
+        const commentsDiv = document.getElementById("comments");
+
+        propertyDetailsDiv.innerHTML = "";
+        commentsDiv.innerHTML = "";
+
+        if (area) {
+            const selectedProperties = properties[area];
+            selectedProperties.forEach(property => {
+                const propertyDiv = document.createElement("div");
+                propertyDiv.className = "property";
+                propertyDiv.innerHTML = `
+                    <img src="${property.image}" alt="${property.name}">
+                    <h4>${property.name}</h4>
+                    <p>Price: ${property.price}</p>
+                    <p>Owner: ${property.owner}</p>
+                    <p>Contact: ${property.contact}</p>
+                `;
+                propertyDetailsDiv.appendChild(propertyDiv);
+
+                // Display comments
+                property.comments.forEach(comment => {
+                    const commentDiv = document.createElement("div");
+                    commentDiv.className = "comment";
+                    commentDiv.innerText = comment;
+                    commentsDiv.appendChild(commentDiv);
                 });
+            });
 
-                resultsDiv.style.display = "block";
-            } else {
-                resultsDiv.style.display = "none";
-            }
+            resultsDiv.style.display = "block";
+        } else {
+            resultsDiv.style.display = "none";
         }
+    }
+</script>
 
-        function bookProperty() {
-            alert("Thank you for your interest! A representative will contact you shortly.");
-        }
-    </script>
 </body>
 </html>
