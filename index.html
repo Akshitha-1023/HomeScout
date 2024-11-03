@@ -20,6 +20,15 @@
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        header h1 {
+            margin: 0;
+        }
+        header h2 {
+            font-size: 18px;
+            font-weight: normal;
+            color: #e1e1e1;
+            margin-top: 5px;
+        }
         nav {
             display: flex;
             justify-content: center;
@@ -66,11 +75,12 @@
             margin: 20px 0;
             text-align: center;
         }
-        .search-area input[type="text"] {
+        .search-area select {
             padding: 10px;
             width: 300px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
         }
         .search-area button {
             padding: 10px 15px;
@@ -95,42 +105,77 @@
         .results h3 {
             margin-top: 0;
         }
+        .comments {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+        .comments h3 {
+            margin-top: 0;
+        }
+        .comments p {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Homescout - Your Perfect Rental Home Finder</h1>
+        <h1>Homescout</h1>
+        <h2>Your Perfect Rental Home Finder</h2>
     </header>
     <nav>
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#search">Search</a>
+        <a href="#comments">User Comments</a>
         <a href="#contact">Contact</a>
     </nav>
     <main>
         <section id="about">
             <h2>About Homescout</h2>
-            <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home.</p>
+            <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home. We aim to simplify the renting process by providing comprehensive information on various rental properties in your desired area. Our platform helps you make informed decisions by providing key insights and features tailored to your needs.</p>
         </section>
         <section id="features">
             <h2>Features</h2>
+            <p>Homescout comes packed with powerful features designed to enhance your rental search experience:</p>
             <ul>
-                <li>Access to detailed contact information of property owners.</li>
-                <li>Transparent rental prices for easy comparisons.</li>
-                <li>User ratings and reviews to guide your choices.</li>
-                <li>Search multiple areas efficiently.</li>
-                <li>Favorites and alerts for new listings.</li>
+                <li>Access to detailed contact information of property owners for easy communication.</li>
+                <li>Transparent rental prices to facilitate quick and easy comparisons.</li>
+                <li>User ratings and reviews that guide your choices and ensure quality.</li>
+                <li>Search functionality that allows you to explore multiple areas with ease.</li>
+                <li>Favorites and alerts for new listings, so you never miss out on opportunities.</li>
+                <li>Detailed insights into area ratings, popularity, and geographical length to help you find the perfect neighborhood.</li>
+                <li>Intuitive design that simplifies navigation and enhances user experience.</li>
             </ul>
+            <p>With Homescout, your search for the perfect rental home becomes a breeze.</p>
         </section>
         <section id="search">
             <h2>Search for Areas</h2>
             <div class="search-area">
-                <input type="text" id="areaInput" placeholder="Enter area name..." />
+                <select id="areaSelect">
+                    <option value="">Select an area...</option>
+                    <option value="Downtown">Downtown</option>
+                    <option value="Uptown">Uptown</option>
+                    <option value="Suburbia">Suburbia</option>
+                    <option value="Westside">Westside</option>
+                    <option value="Eastside">Eastside</option>
+                </select>
                 <button onclick="searchArea()">Search</button>
             </div>
             <div class="results" id="searchResults" style="display:none;">
                 <h3>Search Results</h3>
                 <ul id="resultsList"></ul>
+            </div>
+        </section>
+        <section id="comments">
+            <h2>User Comments</h2>
+            <div class="comments">
+                <h3>What Our Users Are Saying</h3>
+                <p>"Homescout made my rental search so easy! I found my perfect apartment in no time." - Alex J.</p>
+                <p>"I love the detailed area ratings and reviews. It helped me choose the right neighborhood." - Priya K.</p>
+                <p>"The search feature is user-friendly, and I appreciate the updates on new listings!" - Mark T.</p>
+                <p>"Thanks to Homescout, I moved into a great rental property that I love!" - Sarah M.</p>
             </div>
         </section>
         <section id="contact">
@@ -151,19 +196,19 @@
         };
 
         function searchArea() {
-            const input = document.getElementById('areaInput').value.trim();
+            const selectedArea = document.getElementById('areaSelect').value;
             const resultsDiv = document.getElementById('searchResults');
             const resultsList = document.getElementById('resultsList');
             resultsList.innerHTML = '';
             
-            if (input) {
-                const areaInfo = areaData[input];
+            if (selectedArea) {
+                const areaInfo = areaData[selectedArea];
                 if (areaInfo) {
                     resultsDiv.style.display = 'block';
-                    resultsList.innerHTML += <li>${input} - Rating: ${areaInfo.rating}, Popularity: ${areaInfo.popularity}, Length: ${areaInfo.length}</li>;
+                    resultsList.innerHTML += <li>${selectedArea} - Rating: ${areaInfo.rating}, Popularity: ${areaInfo.popularity}, Length: ${areaInfo.length}</li>;
                 } else {
                     resultsDiv.style.display = 'block';
-                    resultsList.innerHTML += <li>No results found for "${input}".</li>;
+                    resultsList.innerHTML += <li>No results found for "${selectedArea}".</li>;
                 }
             } else {
                 resultsDiv.style.display = 'none';
