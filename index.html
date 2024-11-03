@@ -1,3 +1,6 @@
+Here's the fully revised HTML code, incorporating the features you requested, including images, extended content, user comments, and a more sophisticated design:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,7 +142,7 @@
     </header>
     <main>
         <section class="info-section">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fapartment-living-people&psig=AOvVaw1AlT4IUq1pcCS9iHMliQEC&ust=1730726811447000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNjcjYiiwIkDFQAAAAAdAAAAABAE" alt="Happy Family in Home">
+            <img src="https://via.placeholder.com/1400x400?text=Find+Your+Dream+Home" alt="Happy Family in Home">
             <p>Welcome to Homescout, your go-to solution for finding rental properties that fit your lifestyle. Whether you're searching for modern urban living or cozy suburban homes, Homescout offers comprehensive details on rental prices, area popularity, ratings, and contact information. Our platform is designed to make your home search intuitive, efficient, and enjoyable.</p>
         </section>
         <section class="search-area">
@@ -153,6 +156,8 @@
                 <option value="Eastside">Eastside</option>
                 <option value="Greenview">Greenview</option>
                 <option value="Mapleton">Mapleton</option>
+                <option value="Oceanview">Oceanview</option>
+                <option value="Riverdale">Riverdale</option>
             </select>
             <button onclick="displayProperties()">Search</button>
         </section>
@@ -180,43 +185,72 @@
             ],
             "Suburbia": [
                 { name: "Family Home", price: "$900/month", owner: "Emily Clark", contact: "333-222-1111", image: "https://via.placeholder.com/600x400?text=Family+Home", comments: ["Perfect for families.", "Quiet and friendly neighborhood."] }
+            ],
+            "Westside": [
+                { name: "Charming Bungalow", price: "$850/month", owner: "Paul Wilson", contact: "444-555-6666", image: "https://via.placeholder.com/600x400?text=Charming+Bungalow", comments: ["Great backyard!", "Very cozy and inviting."] }
+            ],
+            "Eastside": [
+                { name: "Stylish Flat", price: "$1100/month", owner: "Sara Johnson", contact: "777-888-9999", image: "https://via.placeholder.com/600x400?text=Stylish+Flat", comments: ["Nice neighborhood.", "Close to parks and schools."] }
+            ],
+            "Greenview": [
+                { name: "Spacious Townhouse", price: "$1300/month", owner: "Linda Parker", contact: "111-222-3333", image: "https://via.placeholder.com/600x400?text=Spacious+Townhouse", comments: ["Perfect for couples.", "Quiet and safe area."] }
+            ],
+            "Mapleton": [
+                                { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
+            ],
+            "Oceanview": [
+                { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://via.placeholder.com/600x400?text=Beachfront+Property", comments: ["Stunning views!", "Great for vacations."] }
+            ],
+            "Riverdale": [
+                { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://via.placeholder.com/600x400?text=Riverfront+Cabin", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
             ]
         };
 
         function displayProperties() {
             const area = document.getElementById("areaSelect").value;
-            const resultsList = document.getElementById("resultsList");
-            const propertyDetails = document.getElementById("propertyDetails");
-            const contactInfo = document.getElementById("contactInfo");
-            const commentsSection = document.getElementById("comments");
+            const resultsDiv = document.getElementById("resultsList");
+            const propertyDetailsDiv = document.getElementById("propertyDetails");
+            const contactInfoDiv = document.getElementById("contactInfo");
+            const commentsDiv = document.getElementById("comments");
 
-            if (area && properties[area]) {
-                resultsList.style.display = "block";
-                propertyDetails.innerHTML = properties[area].map(prop => `
-                    <div class="property">
-                        <img src="${prop.image}" alt="${prop.name}">
-                        <h4>${prop.name}</h4>
-                        <p>Price: ${prop.price}</p>
-                    </div>
-                `).join('');
-                contactInfo.innerHTML = properties[area].map(prop => `
-                    <p>Owner: ${prop.owner}, Contact: ${prop.contact}</p>
-                `).join('');
-                commentsSection.innerHTML = properties[area].flatMap(prop => prop.comments.map(comment => `
-                    <p class="comment">"${comment}"</p>
-                `)).join('');
+            propertyDetailsDiv.innerHTML = "";
+            contactInfoDiv.innerHTML = "";
+            commentsDiv.innerHTML = "";
+
+            if (area) {
+                const selectedProperties = properties[area];
+                selectedProperties.forEach(property => {
+                    const propertyDiv = document.createElement("div");
+                    propertyDiv.className = "property";
+                    propertyDiv.innerHTML = `
+                        <img src="${property.image}" alt="${property.name}">
+                        <h4>${property.name}</h4>
+                        <p>Price: ${property.price}</p>
+                        <p>Owner: ${property.owner}</p>
+                        <div class="contact-info">
+                            <p>Contact: ${property.contact}</p>
+                        </div>
+                    `;
+                    propertyDetailsDiv.appendChild(propertyDiv);
+
+                    // Display comments
+                    property.comments.forEach(comment => {
+                        const commentDiv = document.createElement("div");
+                        commentDiv.className = "comment";
+                        commentDiv.innerText = comment;
+                        commentsDiv.appendChild(commentDiv);
+                    });
+                });
+
+                resultsDiv.style.display = "block";
             } else {
-                resultsList.style.display = "none";
-                propertyDetails.innerHTML = "";
-                contactInfo.innerHTML = "";
-                commentsSection.innerHTML = "";
+                resultsDiv.style.display = "none";
             }
         }
 
         function bookProperty() {
-            alert("Thank you for booking! The property owner will contact you soon.");
+            alert("Thank you for your interest! A representative will contact you shortly.");
         }
-    </
-            </script>
+    </script>
 </body>
 </html>
