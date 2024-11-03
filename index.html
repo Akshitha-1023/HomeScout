@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescout - Your Perfect Rental Home Finder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f7fa;
             margin: 0;
+            padding: 0;
             color: #333;
         }
         header {
-            background-color: #3b5998;
-            color: #fff;
+            background-color: #30475e;
+            color: #f5f5f5;
             text-align: center;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         header h1 {
-            font-size: 48px;
+            font-size: 50px;
             margin: 0;
             font-weight: 600;
         }
@@ -30,51 +31,53 @@
             margin-top: 5px;
         }
         main {
-            max-width: 1200px;
-            margin: 30px auto;
+            max-width: 1300px;
+            margin: 40px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         .info-section {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             text-align: center;
         }
         .info-section img {
             width: 100%;
-            max-height: 300px;
-            border-radius: 10px;
+            max-height: 350px;
+            border-radius: 12px;
             margin-bottom: 20px;
         }
         .info-section p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .search-area {
-            text-align: center;
+            font-size: 20px;
+            line-height: 1.8;
+            font-family: 'Lato', sans-serif;
             margin-bottom: 25px;
         }
-        .search-area select {
-            padding: 12px;
+        .search-area {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .search-area select, .search-area input {
+            padding: 14px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             border: 1px solid #ddd;
-            margin-right: 10px;
-            width: 300px;
+            margin-right: 12px;
+            width: 320px;
         }
         .search-area button {
-            padding: 12px 20px;
-            background-color: #3b5998;
-            color: #fff;
+            padding: 14px 24px;
+            background-color: #30475e;
+            color: #f5f5f5;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .search-area button:hover {
-            background-color: #31497d;
+            background-color: #1f3348;
         }
         .results {
             display: none;
@@ -83,11 +86,11 @@
             border-radius: 8px;
         }
         .property {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 25px;
+            padding: 18px;
             background-color: #fff;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -95,32 +98,36 @@
         .property img {
             width: 90%;
             height: auto;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            margin-bottom: 18px;
         }
         .property h4 {
-            color: #3b5998;
-            margin: 0 0 5px;
+            color: #30475e;
+            margin: 0 0 8px;
         }
         .property p {
-            margin: 5px 0;
+            margin: 6px 0;
+            font-size: 17px;
         }
         .contact-info, .booking {
-            margin-top: 15px;
+            margin-top: 18px;
             text-align: center;
         }
         .user-comments {
-            margin-top: 15px;
-            background-color: #e8f4fc;
-            padding: 15px;
-            border-radius: 8px;
+            margin-top: 20px;
+            background-color: #e9f5fc;
+            padding: 18px;
+            border-radius: 10px;
         }
         .user-comments h5 {
-            margin: 0 0 10px;
+            margin: 0 0 12px;
+            font-size: 22px;
+            color: #30475e;
         }
         .comment {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-style: italic;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -131,8 +138,8 @@
     </header>
     <main>
         <section class="info-section">
-            <img src="https://via.placeholder.com/1200x300?text=Find+Your+Dream+Home" alt="Happy Family in Home">
-            <p>Homescout is your trusted partner in finding the perfect rental home that suits your lifestyle and budget. From bustling city apartments to quiet suburban homes, we provide comprehensive details, ratings, and owner contact information to make your search seamless and stress-free.</p>
+            <img src="https://via.placeholder.com/1300x350?text=Find+Your+Dream+Home" alt="Happy Family in Home">
+            <p>Welcome to Homescout, your dedicated partner in discovering your ideal rental home. With a wide selection of properties and detailed information on rent, neighborhood popularity, and contact information, Homescout makes your home search smooth and convenient. Explore areas known for their vibrant lifestyle or serene environments, all tailored to your preferences.</p>
         </section>
         <section class="search-area">
             <h2>Search for Rental Areas</h2>
@@ -168,7 +175,7 @@
             "Uptown": [
                 { name: "Spacious Condo", price: "$1500/month", owner: "Michael Brown", contact: "456-789-1234", image: "https://via.placeholder.com/400x300?text=Spacious+Condo", comments: ["Elegant interiors.", "Great community environment."] }
             ],
-            // Additional areas can be added here
+            // Add more areas and properties here
         };
 
         function displayProperties() {
