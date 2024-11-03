@@ -27,12 +27,12 @@
             margin: 10px 0;
             font-style: italic;
         }
-        .intro {
+        .intro, .features, .reviews {
             padding: 20px;
             background-color: #ffffff;
-            text-align: center;
             margin: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
         }
         .search-area {
             margin: 20px;
@@ -98,20 +98,22 @@
             bottom: 0;
             width: 100%;
         }
-        .review-form {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .review-section {
+            margin-top: 30px;
         }
-        .review-form textarea {
-            width: 100%;
-            height: 60px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
+        .review-section h3 {
+            font-size: 24px;
+        }
+        .review-section textarea {
+            width: 90%;
+            height: 80px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .overall-reviews {
+            font-size: 18px;
+            margin: 20px;
+            text-align: left;
         }
     </style>
 </head>
@@ -124,7 +126,20 @@
 
 <div class="intro">
     <p>Welcome to Homescout, the ultimate solution for all your rental needs! Our platform connects renters with a wide variety of rental properties across multiple areas, offering detailed information and user-friendly features.</p>
+    <p>Whether you're looking for a cozy apartment downtown, a spacious house in the suburbs, or a luxurious beachfront property, we have options for everyone. Our goal is to simplify your search process by providing you with all the necessary tools and information at your fingertips.</p>
     <p>Explore the properties, check their ratings, and read user comments to make an informed decision. Your perfect rental home is just a few clicks away!</p>
+</div>
+
+<div class="features">
+    <h2>Why Choose Homescout?</h2>
+    <p>We offer a wide range of features designed to enhance your rental experience:</p>
+    <ul>
+        <li>Comprehensive listings with detailed information.</li>
+        <li>User reviews to help you make informed choices.</li>
+        <li>Easy-to-use search functionality by area.</li>
+        <li>Direct contact with property owners.</li>
+    </ul>
+    <p>Our policy is to ensure transparency and reliability, making your home search as smooth as possible.</p>
 </div>
 
 <div class="search-area">
@@ -142,6 +157,16 @@
 <div class="results" id="resultsList">
     <h3>Available Properties:</h3>
     <div id="propertyDetails"></div>
+    <div id="comments"></div>
+</div>
+
+<div class="review-section">
+    <h3>User Reviews</h3>
+    <div class="overall-reviews">
+        <p>Overall user feedback indicates high satisfaction with our services. Users appreciate the range of properties available and the ease of connecting with owners.</p>
+    </div>
+    <textarea id="userReview" placeholder="Write your review here..."></textarea>
+    <button onclick="submitReview()">Submit Review</button>
 </div>
 
 <footer>
@@ -151,66 +176,35 @@
 <script>
     const properties = {
         "Downtown": [
-            {
-                name: "City View Apartment",
-                price: "$1200/month",
-                owner: "Jane Smith",
-                contact: "987-654-3210",
-                image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg",
-                comments: ["Beautiful skyline views.", "Perfect for city lovers."]
-            }
+            { name: "Luxury Condo", price: "$1500/month", owner: "John Doe", contact: "123-456-7890", image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg", comments: ["Great location!", "Loved the amenities!"] },
+            { name: "City View Apartment", price: "$1200/month", owner: "Jane Smith", contact: "987-654-3210", image: "https://images.stockcake.com/public/8/8/1/8814dc5c-08e3-48f6-be0a-287e67513bf8_large/city-view-apartment-stockcake.jpg", comments: ["Beautiful skyline views.", "Perfect for city lovers."] }
         ],
         "Suburbs": [
-            {
-                name: "Cozy Family House",
-                price: "$1100/month",
-                owner: "Alice Johnson",
-                contact: "555-555-5555",
-                image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg",
-                comments: ["Ideal for families.", "Spacious backyard."]
-            }
+            { name: "Cozy Family House", price: "$1100/month", owner: "Alice Johnson", contact: "555-555-5555", image: "https://www.pufikhomes.com/wp-content/uploads/2018/05/family-home-in-colorado-pufikhomes-1.jpg", comments: ["Ideal for families.", "Spacious backyard."] }
         ],
         "Uptown": [
-            {
-                name: "Eco-Friendly Apartment",
-                price: "$950/month",
-                owner: "Kevin Brown",
-                contact: "999-888-7777",
-                image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment",
-                comments: ["Green living!", "Wonderful community atmosphere."]
-            }
+            { name: "Eco-Friendly Apartment", price: "$950/month", owner: "Kevin Brown", contact: "999-888-7777", image: "https://via.placeholder.com/600x400?text=Eco-Friendly+Apartment", comments: ["Green living!", "Wonderful community atmosphere."] }
         ],
         "Oceanview": [
-            {
-                name: "Oceanview Apartment",
-                price: "$1800/month",
-                owner: "Emma Wilson",
-                contact: "888-777-6666",
-                image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg",
-                comments: ["Stunning views!", "Great for vacations."]
-            }
+            { name: "Beachfront Property", price: "$1800/month", owner: "Emma Wilson", contact: "888-777-6666", image: "https://smithbrothersconstruction.com/wp-content/uploads/2014/04/3KapaluaPl-566-Edit.jpg", comments: ["Stunning views!", "Great for vacations."] }
         ],
         "Riverdale": [
-            {
-                name: "Riverfront Apartment",
-                price: "$1400/month",
-                owner: "Sam Green",
-                contact: "555-444-3333",
-                image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg",
-                comments: ["Peaceful surroundings.", "Perfect for nature lovers."]
-            }
+            { name: "Riverfront Cabin", price: "$1400/month", owner: "Sam Green", contact: "555-444-3333", image: "https://www.eloghomes.com/wp-content/uploads/2021/11/lg_riverfront_lg-600x337.jpg", comments: ["Peaceful surroundings.", "Perfect for nature lovers."] }
         ]
     };
 
     function displayProperties() {
         const area = document.getElementById("areaSelect").value;
         const resultsDiv = document.getElementById("resultsList");
-        const propertyDetailsDiv = document.getElementById("propertyDetails");
-
-        propertyDetailsDiv.innerHTML = "";
+        const propertyDetailsDiv =         document.getElementById("propertyDetails");
+        const commentsDiv = document.getElementById("comments");
+        
+        propertyDetailsDiv.innerHTML = ""; // Clear previous results
+        commentsDiv.innerHTML = ""; // Clear previous comments
 
         if (area) {
             const selectedProperties = properties[area];
+
             selectedProperties.forEach(property => {
                 const propertyDiv = document.createElement("div");
                 propertyDiv.className = "property";
@@ -220,38 +214,44 @@
                     <p>Price: ${property.price}</p>
                     <p>Owner: ${property.owner}</p>
                     <p>Contact: ${property.contact}</p>
-                    <button onclick="alert('You have booked ${property.name}!')">Book Now</button>
-                    <div>
-                        <h5>User Reviews:</h5>
+                    <h5>User Comments:</h5>
+                    <div class="comments-section">
                         ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
-                    </div>
-                    <div class="review-form">
-                        <h5>Write Your Review:</h5>
-                        <textarea id="newReview_${property.name.replace(/\s+/g, '_')}" placeholder="Enter your review here..."></textarea>
-                        <button onclick="submitReview('${property.name.replace(/\s+/g, '_')}', '${property.name}')">Submit</button>
                     </div>
                 `;
                 propertyDetailsDiv.appendChild(propertyDiv);
             });
-            resultsDiv.style.display = "block";
-        } else {
-            resultsDiv.style.display = "none";
+
+            resultsDiv.style.display = "block"; // Show results
         }
     }
 
-    function submitReview(propertyId, propertyName) {
-        const reviewInput = document.getElementById(`newReview_${propertyId}`);
-        const newReview = reviewInput.value.trim();
-        if (newReview) {
-            const property = properties[document.getElementById("areaSelect").value].find(prop => prop.name.replace(/\s+/g, '_') === propertyId);
-            property.comments.push(newReview);
-            reviewInput.value = ""; // Clear the input
-            displayProperties(); // Refresh the display to show the new review
-                } else {
-            alert("Please enter a review before submitting.");
+    function submitReview() {
+        const reviewText = document.getElementById("userReview").value;
+        const commentsDiv = document.getElementById("comments");
+        const area = document.getElementById("areaSelect").value;
+
+        if (reviewText && area) {
+            const selectedProperties = properties[area];
+
+            selectedProperties.forEach(property => {
+                property.comments.push(reviewText); // Add new review to the property comments
+
+                const commentDiv = document.createElement("div");
+                commentDiv.className = "comment";
+                commentDiv.textContent = reviewText;
+                commentsDiv.appendChild(commentDiv); // Display new review immediately
+            });
+
+            document.getElementById("userReview").value = ""; // Clear the textarea
+            alert("Review submitted successfully!");
+        } else {
+            alert("Please select an area and enter a review.");
         }
     }
 </script>
 
 </body>
 </html>
+
+
