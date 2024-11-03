@@ -126,7 +126,6 @@
 <div class="results" id="resultsList">
     <h3>Available Properties:</h3>
     <div id="propertyDetails"></div>
-    <div id="comments"></div>
 </div>
 
 <footer>
@@ -191,10 +190,8 @@
         const area = document.getElementById("areaSelect").value;
         const resultsDiv = document.getElementById("resultsList");
         const propertyDetailsDiv = document.getElementById("propertyDetails");
-        const commentsDiv = document.getElementById("comments");
 
         propertyDetailsDiv.innerHTML = "";
-        commentsDiv.innerHTML = "";
 
         if (area) {
             const selectedProperties = properties[area];
@@ -208,16 +205,12 @@
                     <p>Owner: ${property.owner}</p>
                     <p>Contact: ${property.contact}</p>
                     <button onclick="alert('You have booked ${property.name}!')">Book Now</button>
+                    <div>
+                        <h5>User Reviews:</h5>
+                        ${property.comments.map(comment => `<div class="comment">${comment}</div>`).join('')}
+                    </div>
                 `;
                 propertyDetailsDiv.appendChild(propertyDiv);
-
-                // Display comments
-                property.comments.forEach(comment => {
-                    const commentDiv = document.createElement("div");
-                    commentDiv.className = "comment";
-                    commentDiv.innerText = comment;
-                    commentsDiv.appendChild(commentDiv);
-                });
             });
             resultsDiv.style.display = "block";
         } else {
