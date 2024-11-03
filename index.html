@@ -22,9 +22,10 @@
         }
         header h1 {
             margin: 0;
+            font-size: 36px;
         }
         header h2 {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: normal;
             color: #e1e1e1;
             margin-top: 5px;
@@ -153,7 +154,7 @@
         <section id="search">
             <h2>Search for Areas</h2>
             <div class="search-area">
-                <select id="areaSelect">
+                <select id="areaSelect" onchange="showInfo()">
                     <option value="">Select an area...</option>
                     <option value="Downtown">Downtown</option>
                     <option value="Uptown">Uptown</option>
