@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescout - Your Perfect Rental Home Finder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f7f9fc;
             margin: 0;
             padding: 0;
@@ -52,15 +53,21 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
         }
         section {
             margin-bottom: 40px;
             padding: 20px;
             border-radius: 8px;
             background-color: #eaf0f7;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         h2 {
             color: #0056b3;
+            flex-basis: 100%;
         }
         footer {
             background-color: #0056b3;
@@ -111,12 +118,23 @@
             padding: 20px;
             background-color: #f1f1f1;
             border-radius: 8px;
+            flex-basis: 100%;
         }
         .comments h3 {
             margin-top: 0;
         }
         .comments p {
             margin: 10px 0;
+        }
+        .info {
+            flex-basis: 45%;
+            margin-right: 20px;
+        }
+        .contact-info {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #eaf0f7;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -135,21 +153,25 @@
     <main>
         <section id="about">
             <h2>About Homescout</h2>
-            <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home. We aim to simplify the renting process by providing comprehensive information on various rental properties in your desired area. Our platform helps you make informed decisions by providing key insights and features tailored to your needs.</p>
+            <div class="info">
+                <p>Welcome to Homescout, the platform dedicated to connecting you with your ideal rental home. We aim to simplify the renting process by providing comprehensive information on various rental properties in your desired area. Our platform helps you make informed decisions by providing key insights and features tailored to your needs.</p>
+            </div>
         </section>
         <section id="features">
             <h2>Features</h2>
-            <p>Homescout comes packed with powerful features designed to enhance your rental search experience:</p>
-            <ul>
-                <li>Access to detailed contact information of property owners for easy communication.</li>
-                <li>Transparent rental prices to facilitate quick and easy comparisons.</li>
-                <li>User ratings and reviews that guide your choices and ensure quality.</li>
-                <li>Search functionality that allows you to explore multiple areas with ease.</li>
-                <li>Favorites and alerts for new listings, so you never miss out on opportunities.</li>
-                <li>Detailed insights into area ratings, popularity, and geographical length to help you find the perfect neighborhood.</li>
-                <li>Intuitive design that simplifies navigation and enhances user experience.</li>
-            </ul>
-            <p>With Homescout, your search for the perfect rental home becomes a breeze.</p>
+            <div class="info">
+                <p>Homescout comes packed with powerful features designed to enhance your rental search experience:</p>
+                <ul>
+                    <li>Access to detailed contact information of property owners for easy communication.</li>
+                    <li>Transparent rental prices to facilitate quick and easy comparisons.</li>
+                    <li>User ratings and reviews that guide your choices and ensure quality.</li>
+                    <li>Search functionality that allows you to explore multiple areas with ease.</li>
+                    <li>Favorites and alerts for new listings, so you never miss out on opportunities.</li>
+                    <li>Detailed insights into area ratings, popularity, and geographical length to help you find the perfect neighborhood.</li>
+                    <li>Intuitive design that simplifies navigation and enhances user experience.</li>
+                </ul>
+                <p>With Homescout, your search for the perfect rental home becomes a breeze.</p>
+            </div>
         </section>
         <section id="search">
             <h2>Search for Areas</h2>
@@ -167,6 +189,7 @@
             <div class="results" id="searchResults" style="display:none;">
                 <h3>Search Results</h3>
                 <ul id="resultsList"></ul>
+                <div class="contact-info" id="contactInfo" style="display:none;"></div>
             </div>
         </section>
         <section id="comments">
@@ -189,32 +212,8 @@
     </footer>
     <script>
         const areaData = {
-            "Downtown": { rating: 4.5, popularity: "High", length: "2 miles" },
-            "Uptown": { rating: 4.0, popularity: "Medium", length: "1.5 miles" },
-            "Suburbia": { rating: 3.8, popularity: "Medium", length: "3 miles" },
-            "Westside": { rating: 4.2, popularity: "High", length: "2.5 miles" },
-            "Eastside": { rating: 3.5, popularity: "Low", length: "4 miles" },
-        };
-
-        function searchArea() {
-            const selectedArea = document.getElementById('areaSelect').value;
-            const resultsDiv = document.getElementById('searchResults');
-            const resultsList = document.getElementById('resultsList');
-            resultsList.innerHTML = '';
-            
-            if (selectedArea) {
-                const areaInfo = areaData[selectedArea];
-                if (areaInfo) {
-                    resultsDiv.style.display = 'block';
-                    resultsList.innerHTML += <li>${selectedArea} - Rating: ${areaInfo.rating}, Popularity: ${areaInfo.popularity}, Length: ${areaInfo.length}</li>;
-                } else {
-                    resultsDiv.style.display = 'block';
-                    resultsList.innerHTML += <li>No results found for "${selectedArea}".</li>;
-                }
-            } else {
-                resultsDiv.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
+            "Downtown": { rating: 4.5, popularity: "High", length: "2 miles", contact: "John Doe - 555-1234" },
+            "Uptown": { rating: 4.0, popularity: "Medium", length: "1.5 miles", contact: "Jane Smith - 555-5678" },
+            "Suburbia": { rating: 3.8, popularity: "Medium", length: "3 miles", contact: "Emily Johnson - 555-8765" },
+            "Westside": { rating: 4.2, popularity: "High", length: "2.5 miles", contact: "Michael Brown - 555-4321" },
+            "Eastside": { rating: 3.5, popularity: "Low", length: "4 miles", contact: "Sarah Davis
